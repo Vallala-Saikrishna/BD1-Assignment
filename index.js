@@ -1,7 +1,10 @@
 const express = require('express');
-const { resolve } = require('path');
+const cors = require("cors")
+
+
 
 const app = express();
+app.use(cors())
 const port = 3000;
 
 app.use(express.static('static'));
@@ -64,6 +67,7 @@ app.get('/loyalty-points', (req, res) => {
   let loyalityPoints = purchaseAmount * lotalityRate;
   res.send(loyalityPoints.toString());
 });
+
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
